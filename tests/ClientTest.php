@@ -29,6 +29,18 @@ class ClientTest extends TestCase {
     }
 
     /** @test */
+    public function it_can_determine_if_currency_supported()
+    {
+        $result = new stdClass();
+        $result->GetCurrenciesResult = '<MNBCurrencies><Currencies><Curr>HUF</Curr><Curr>EUR</Curr></Currencies></MNBCurrencies>';
+        $this->soapClient
+            ->method('GetCurrencies')
+            ->willReturn($result);
+
+        $this->assertFalse($this->client->hasCurrency('IRRELEVANT CURRENCY'));
+    }
+
+    /** @test */
     public function it_can_return_with_currencies()
     {
         $result = new stdClass();
