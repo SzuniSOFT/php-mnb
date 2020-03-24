@@ -16,7 +16,10 @@ class Client {
 
     /**
      * Client constructor.
+     *
      * @param string $wsdl
+     *
+     * @throws \SoapFault
      */
     public function __construct($wsdl = 'http://www.mnb.hu/arfolyamok.asmx?wsdl')
     {
@@ -56,9 +59,16 @@ class Client {
     public function currentExchangeRate($code, &$date = null)
     {
         $code = trim(strtoupper($code));
-        return array_first($this->currentExchangeRates($date), function (Currency $exchangeRateCurrency) use (&$code) {
-            return $exchangeRateCurrency->getCode() == $code;
-        });
+
+        foreach($this->currentExchangeRates($date) as $currency) {
+
+            if($currency->getCode() == $code) {
+                return $currency;
+            }
+
+        }
+
+        return null;
     }
 
     /**
