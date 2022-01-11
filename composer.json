@@ -18,17 +18,16 @@
     }
   ],
   "require": {
-    "php": "^7.1.3",
+    "php": ">=8.0",
     "ext-simplexml": "*",
     "ext-soap": "*"
   },
   "require-dev": {
-    "phpunit/phpunit": "~7.0",
+    "phpunit/phpunit": "~8.5.0 || ^9.3",
     "mockery/mockery": "1.1.*"
   },
   "autoload": {
-    "files": [
-    ],
+    "files": [],
     "psr-4": {
       "SzuniSoft\\Mnb\\": "src/"
     }
