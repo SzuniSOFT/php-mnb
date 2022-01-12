@@ -1,7 +1,7 @@
 {
-  "name": "szunisoft/mnb",
+  "name": "rrd108/mnb",
   "license": "MIT",
-  "description": "MNB (Magyar Nemzeti Bank) SOAP Client",
+  "description": "PHP 8 version of szunisoft/mnb MNB (Magyar Nemzeti Bank) SOAP Client",
   "keywords": [
     "mnb",
     "magyar",
