@@ -1,14 +1,13 @@
 <?php
 
-
 namespace SzuniSoft\Mnb\Tests;
-
 
 use PHPUnit\Framework\TestCase;
 use stdClass;
 use SzuniSoft\Mnb\Client;
 
-class ClientTest extends TestCase {
+class ClientTest extends TestCase
+{
 
     /**
      * @var Client
@@ -20,10 +19,11 @@ class ClientTest extends TestCase {
      */
     protected $soapClient;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         parent::setUp();
         $this->client = new Client();
+        /** @var \SoapClient&\PHPUnit_Framework_MockObject_MockObject $soapClient */
         $this->soapClient = $this->getMockFromWsdl('http://www.mnb.hu/arfolyamok.asmx?wsdl');
         $this->client->setClient($this->soapClient);
     }
@@ -51,7 +51,7 @@ class ClientTest extends TestCase {
 
         $this->assertEquals([
             'HUF', 'EUR'
-        ],$this->client->currencies());
+        ], $this->client->currencies());
     }
 
     /** @test */
